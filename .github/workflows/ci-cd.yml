@@ -61,8 +61,8 @@ jobs:
       - name: Run tests inside built image
         run: |
           set -e
-          docker run --rm --network host \
-            -e DATABASE_URL="postgresql+psycopg://kubsu:kubsu@127.0.0.1:5432/kubsu" \
+          docker run --rm \
+            -e DATABASE_URL="postgresql+psycopg://kubsu:kubsu@172.17.0.1:5432/kubsu" \
             -e ROOT_PATH="" \
             "${IMAGE}:test-${{ github.sha }}"
 
